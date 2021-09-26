@@ -1,4 +1,5 @@
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +8,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-
+@Slf4j
 public class Student {
 
     private String name;
@@ -25,6 +26,7 @@ public class Student {
         this.email = email;
         this.studentNumber = studentNumber;
         this.averageMark = averageMark;
+        log.info("Student was created: "+ this.toString());
     }
 
     public boolean canEnroll(Course course) {
@@ -37,16 +39,19 @@ public class Student {
 
     void enroll(Course course) {
         if (!canEnroll(course)) {
+            log.info("Failed enrolling to course " + course.getName() + " - this student in not eligible to enroll it");
             throw new RuntimeException();
         }
         Enrollment newEnrollment = new Enrollment();
-        course.addStudent(this,newEnrollment);
+        course.addStudent(this, newEnrollment);
         enrollments.put(course, newEnrollment);
+        log.info("Successfully enrolled to course : " + course.getName());
     }
 
     void unenroll(Course course) {
         course.removeStudent(this);
         enrollments.remove(course);
+        log.info("Successfully unenrolled from course : " + course.getName());
     }
 
     @Override

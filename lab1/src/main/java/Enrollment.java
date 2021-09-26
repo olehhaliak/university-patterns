@@ -1,17 +1,20 @@
 import lombok.Data;
-import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Data
+@Slf4j
 public class Enrollment {
     private Map<Date, Integer> receivedMarks = new HashMap<>();
 
+    public Enrollment() {
+        log.info("Enrollment was created");
+    }
 
-    float getAverageToDate(Date date) {
+    public float getAverageToDate(Date date) {
         List<Integer> marksToDate = receivedMarks.entrySet().stream()
                 .filter(E -> E.getKey().compareTo(date) > 0)
                 .map(Map.Entry::getValue)
@@ -19,7 +22,7 @@ public class Enrollment {
         return getAverage(marksToDate);
     }
 
-    float getFinalMark() {
+    public float getFinalMark() {
         return getAverage(receivedMarks.values());
     }
 

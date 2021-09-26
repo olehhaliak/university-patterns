@@ -1,12 +1,12 @@
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
 @Getter
 @Setter
+@Slf4j
 public class Course {
 
    private String name;
@@ -21,20 +21,20 @@ public class Course {
       this.date = date;
       this.seminarsNumber = seminarsNumber;
       this.fee = fee;
+      log.info("Course was created: "+this);
    }
    public Course(String name, Date date, int seminarsNumber, float fee) {
-      this.name = name;
-      this.date = date;
-      this.seminarsNumber = seminarsNumber;
-      this.fee = fee;
+       this(name,date,null,seminarsNumber,fee);
    }
 
    public void addStudent(Student student,Enrollment enrollment){
       enrolledStudents.put(student,enrollment);
+      log.info("Successfully added new Student : "+student.getName());
    }
 
    public void removeStudent(Student student ){
        enrolledStudents.remove(student);
+      log.info("Successfully removed Student : "+student.getName());
    }
 
    @Override
