@@ -26,7 +26,7 @@ public class Student {
         this.email = email;
         this.studentNumber = studentNumber;
         this.averageMark = averageMark;
-        log.info("Student was created: "+ this.toString());
+        log.info("Student was created: "+ this);
     }
 
     public boolean canEnroll(Course course) {
@@ -39,8 +39,7 @@ public class Student {
 
     void enroll(Course course) {
         if (!canEnroll(course)) {
-            log.info("Failed enrolling to course " + course.getName() + " - this student in not eligible to enroll it");
-            throw new RuntimeException();
+            throw new RuntimeException("Failed enrolling to course " + course.getName() + " - this student in not eligible to enroll it");
         }
         Enrollment newEnrollment = new Enrollment();
         course.addStudent(this, newEnrollment);
