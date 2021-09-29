@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * by OlehHaliak
+ */
 @Data
 @Slf4j
 public class Enrollment {
