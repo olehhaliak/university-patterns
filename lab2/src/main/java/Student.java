@@ -12,24 +12,18 @@ import java.util.Set;
 @Getter
 @Setter
 @Slf4j
-public class Student {
-
-    private String name;
-    private String address;
-    private String phoneNumber;
-    private String email;
-    private int studentNumber;
+public class Student extends Person {
     private float averageMark;
+    private int year;
+
+    //@TODO: replace Course with courseId:int
     private Map<Course, Enrollment> enrollments = new HashMap<>();
 
-    public Student(String name, String address, String phoneNumber, String email, int studentNumber, float averageMark) {
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.studentNumber = studentNumber;
+    public Student(PersonalInfo personalInfo, float averageMark, int year) {
+        super(personalInfo);
         this.averageMark = averageMark;
-        log.info("Student was created: "+ this);
+        this.year = year;
+        log.info("Student was created: " + this);
     }
 
     public boolean canEnroll(Course course) {
@@ -57,27 +51,29 @@ public class Student {
     }
 
     @Override
+    public float calculateWorkload() {
+       //Complex calculations goes here...
+       return 1;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return studentNumber == student.studentNumber && Float.compare(student.averageMark, averageMark) == 0 && Objects.equals(name, student.name) && Objects.equals(address, student.address) && Objects.equals(phoneNumber, student.phoneNumber) && Objects.equals(email, student.email);
+        return Float.compare(student.averageMark, averageMark) == 0 && year == student.year;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, address, phoneNumber, email, studentNumber, averageMark);
+        return Objects.hash(averageMark, year);
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", studentNumber=" + studentNumber +
-                ", averageMark=" + averageMark +
+                "averageMark=" + averageMark +
+                ", year=" + year +
                 '}';
     }
 }
