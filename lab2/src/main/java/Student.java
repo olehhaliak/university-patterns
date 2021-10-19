@@ -16,12 +16,11 @@ public class Student extends Person {
     private float averageMark;
     private int year;
 
-    //@TODO: replace Course with courseId:int
     private Map<Course, Enrollment> enrollments = new HashMap<>();
 
-    public Student(PersonalInfo personalInfo, float averageMark, int year) {
+    public Student(PersonalInfo personalInfo, int year) {
         super(personalInfo);
-        this.averageMark = averageMark;
+        this.averageMark = 0;
         this.year = year;
         log.info("Student was created: " + this);
     }
@@ -52,9 +51,19 @@ public class Student extends Person {
 
     @Override
     public float calculateWorkload() {
-       //Complex calculations goes here...
-       return 1;
+        //Complex calculations goes here...
+        return 1;
     }
+
+    public void visitSeminar(Seminar seminar) {
+        String courseName = seminar.getRelatedCourse();
+        Course relatedCourse = enrollments.keySet().stream()
+                .filter(C -> C.getName().equals(courseName))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("this student does not have any course related to this seminar"));
+        enrollments.get(relatedCourse).addAttendanceRecord(seminar);
+    }
+
 
     @Override
     public boolean equals(Object o) {
