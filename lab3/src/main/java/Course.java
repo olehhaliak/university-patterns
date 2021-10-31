@@ -14,13 +14,13 @@ public abstract class Course {
     protected List<Seminar> seminars;
     protected float fee;
     protected Professor professor;
-    protected Map<Student, Enrollment> enrolledStudents = new HashMap<>();
-
+    protected List<Group> groups;
     public Course(String name, LocalDate date, Professor professor, float fee) {
         this.name = name;
         this.date = date;
         this.seminars = new LinkedList<>();
         this.fee = fee;
+        groups = new ArrayList<>();
         log.info("Course was created: " + this);
     }
 
@@ -30,19 +30,28 @@ public abstract class Course {
 
     public abstract void addStudent(Student student, Enrollment enrollment);
 
+    public abstract void addStudentToGroup(Student student,Enrollment enrollment, Group group);
+
     public abstract void removeStudent(Student student) ;
+
+    public abstract void sendCourseMaterials(Group group,String material);
+
+    /**
+     * @return all materials returned to this group, if this course does not contain group specified, then returns empty list
+     */
+    public abstract Collection<String> getCourseMaterials(Group group) ;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return Float.compare(course.fee, fee) == 0 && Objects.equals(name, course.name) && Objects.equals(date, course.date) && Objects.equals(seminars, course.seminars) && Objects.equals(professor, course.professor) && Objects.equals(enrolledStudents, course.enrolledStudents);
+        return Float.compare(course.fee, fee) == 0 && Objects.equals(name, course.name) && Objects.equals(date, course.date) && Objects.equals(seminars, course.seminars) && Objects.equals(professor, course.professor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, date, seminars, fee, professor, enrolledStudents);
+        return Objects.hash(name, date, seminars, fee, professor);
     }
 
     @Override
@@ -53,7 +62,6 @@ public abstract class Course {
                 ", seminars=" + seminars +
                 ", fee=" + fee +
                 ", professor=" + professor +
-                ", enrolledStudents=" + enrolledStudents +
                 '}';
     }
 }
