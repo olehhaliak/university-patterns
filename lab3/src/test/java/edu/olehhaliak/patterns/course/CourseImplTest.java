@@ -1,12 +1,16 @@
+package edu.olehhaliak.patterns.course;
+
+import edu.olehhaliak.patterns.Enrollment;
+import edu.olehhaliak.patterns.Group;
+import edu.olehhaliak.patterns.PersonalInfo;
+import edu.olehhaliak.patterns.Student;
+import edu.olehhaliak.patterns.course.CourseImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 

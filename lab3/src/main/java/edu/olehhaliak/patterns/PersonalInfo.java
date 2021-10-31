@@ -1,3 +1,5 @@
+package edu.olehhaliak.patterns;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

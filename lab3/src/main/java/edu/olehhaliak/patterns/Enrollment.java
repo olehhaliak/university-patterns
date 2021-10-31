@@ -1,3 +1,5 @@
+package edu.olehhaliak.patterns;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +18,7 @@ public class Enrollment {
     private Set<AttendanceRecord> visitedSeminars = new HashSet<>();
 
     public Enrollment() {
-        log.info("Enrollment was created");
+        log.info("edu.olehhaliak.patterns.Enrollment was created");
     }
 
     public float getAverageMarkToDate(LocalDate date) {

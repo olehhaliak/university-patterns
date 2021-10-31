@@ -1,3 +1,5 @@
+package edu.olehhaliak.patterns;
+
 import lombok.Getter;
 import lombok.Setter;
 

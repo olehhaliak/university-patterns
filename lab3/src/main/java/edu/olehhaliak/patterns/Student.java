@@ -1,3 +1,6 @@
+package edu.olehhaliak.patterns;
+
+import edu.olehhaliak.patterns.course.Course;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,11 +25,11 @@ public class Student extends Person {
         super(personalInfo);
         this.averageMark = 0;
         this.year = year;
-        log.info("Student was created: " + this);
+        log.info("edu.olehhaliak.patterns.Student was created: " + this);
     }
 
     public boolean canEnroll(Course course) {
-        return true; //Since we don`t have any requirements for enrollment yet, lets assume that Student always can enroll
+        return true; //Since we don`t have any requirements for enrollment yet, lets assume that edu.olehhaliak.patterns.Student always can enroll
     }
 
     Set<Course> takenCourses() {
@@ -80,7 +83,7 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "edu.olehhaliak.patterns.Student{" +
                 "averageMark=" + averageMark +
                 ", year=" + year +
                 '}';

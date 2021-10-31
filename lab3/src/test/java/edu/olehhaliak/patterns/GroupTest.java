@@ -1,3 +1,9 @@
+package edu.olehhaliak.patterns;
+
+import edu.olehhaliak.patterns.Enrollment;
+import edu.olehhaliak.patterns.Group;
+import edu.olehhaliak.patterns.PersonalInfo;
+import edu.olehhaliak.patterns.Student;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

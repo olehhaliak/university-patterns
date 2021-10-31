@@ -1,3 +1,5 @@
+package edu.olehhaliak.patterns;
+
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,12 +29,12 @@ public class Group {
 
     public void addStudent(Student student, Enrollment enrollment) {
         enrolledStudents.put(student, enrollment);
-        log.info("Successfully added new Student : " + student.getPersonalInfo().getName());
+        log.info("Successfully added new edu.olehhaliak.patterns.Student : " + student.getPersonalInfo().getName());
     }
 
     public void removeStudent(Student student) {
         enrolledStudents.remove(student);
-        log.info("Successfully removed Student : " + student.getPersonalInfo().getName());
+        log.info("Successfully removed edu.olehhaliak.patterns.Student : " + student.getPersonalInfo().getName());
     }
 
     public void addCourseMaterial(String courseName,String material) {

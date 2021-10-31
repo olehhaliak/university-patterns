@@ -1,3 +1,6 @@
+package edu.olehhaliak.patterns.course;
+
+import edu.olehhaliak.patterns.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +24,7 @@ public abstract class Course {
         this.seminars = new LinkedList<>();
         this.fee = fee;
         groups = new ArrayList<>();
-        log.info("Course was created: " + this);
+        log.info("edu.olehhaliak.patterns.course.Course was created: " + this);
     }
 
     public Course(String name, LocalDate date,  float fee) {
@@ -56,7 +59,7 @@ public abstract class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "edu.olehhaliak.patterns.course.Course{" +
                 "name='" + name + '\'' +
                 ", date=" + date +
                 ", seminars=" + seminars +

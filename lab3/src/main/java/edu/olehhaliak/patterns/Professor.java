@@ -1,8 +1,9 @@
+package edu.olehhaliak.patterns;
+
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,12 +15,12 @@ public class Professor extends Staff {
     Set<PostgraduateStudent> postgraduateStudents = new HashSet<>();
 
     public Professor(PersonalInfo personalInfo, LocalDate employedYear, int sallary) {
-        super(personalInfo, employedYear, "Professor", sallary);
-        log.info("Professor was created: " + this);
+        super(personalInfo, employedYear, "edu.olehhaliak.patterns.Professor", sallary);
+        log.info("edu.olehhaliak.patterns.Professor was created: " + this);
     }
 
     public Professor(PersonalInfo personalInfo, int sallary) {
-        super(personalInfo, "Professor", sallary);
+        super(personalInfo, "edu.olehhaliak.patterns.Professor", sallary);
     }
 
     public void requestSupport(){

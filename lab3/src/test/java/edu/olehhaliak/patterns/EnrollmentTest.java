@@ -1,3 +1,7 @@
+package edu.olehhaliak.patterns;
+
+import edu.olehhaliak.patterns.Enrollment;
+import edu.olehhaliak.patterns.Seminar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

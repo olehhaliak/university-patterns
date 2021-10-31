@@ -1,3 +1,5 @@
+package edu.olehhaliak.patterns;
+
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
@@ -34,7 +36,7 @@ public class Seminar {
     }
 
     public String implementItem(String item) {
-        log.info("Seminar:Implementing item: " + item);
+        log.info("edu.olehhaliak.patterns.Seminar:Implementing item: " + item);
         return item;
     }
 
