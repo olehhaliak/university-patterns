@@ -8,27 +8,15 @@ import java.util.*;
 /**
  * by OlehHaliak
  */
-@Getter
-@Setter
 @Slf4j
-public class Course {
-    private String name;
-    private LocalDate date;
-    private List<Seminar> seminars;
-    private float fee;
-    private Professor professor;
-    private Map<Student, Enrollment> enrolledStudents = new HashMap<>();
+public class CourseImpl extends Course{
 
-    public Course(String name, LocalDate date, Professor professor, float fee) {
-        this.name = name;
-        this.date = date;
-        this.seminars = new LinkedList<>();
-        this.fee = fee;
-        log.info("Course was created: " + this);
+    public CourseImpl(String name, LocalDate date, Professor professor, float fee) {
+        super(name,date,professor,fee);
     }
 
-    public Course(String name, LocalDate date, int seminarsNumber, float fee) {
-        this(name, date, null, fee);
+    public CourseImpl(String name, LocalDate date,  float fee) {
+        super(name,date,fee);
     }
 
     public void addStudent(Student student, Enrollment enrollment) {
@@ -45,8 +33,8 @@ public class Course {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Course course = (Course) o;
-        return Float.compare(course.fee, fee) == 0 && Objects.equals(name, course.name) && Objects.equals(date, course.date) && Objects.equals(seminars, course.seminars) && Objects.equals(professor, course.professor) && Objects.equals(enrolledStudents, course.enrolledStudents);
+        CourseImpl courseImpl = (CourseImpl) o;
+        return Float.compare(courseImpl.fee, fee) == 0 && Objects.equals(name, courseImpl.name) && Objects.equals(date, courseImpl.date) && Objects.equals(seminars, courseImpl.seminars) && Objects.equals(professor, courseImpl.professor) && Objects.equals(enrolledStudents, courseImpl.enrolledStudents);
     }
 
     @Override

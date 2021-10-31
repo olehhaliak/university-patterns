@@ -12,7 +12,7 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class StudentTest {
     @Mock
-    Course course;
+    CourseImpl courseImpl;
     Student student;
 
     @BeforeEach
@@ -22,22 +22,22 @@ class StudentTest {
 
     @Test
     void canEnrollTest() {
-        assertTrue(student.canEnroll(course));
+        assertTrue(student.canEnroll(courseImpl));
     }
 
     @Test
     void enrollTest() {
-        student.enroll(course);
-        assertTrue(student.getEnrollments().containsKey(course));
-        verify(course).addStudent(student, student.getEnrollments().get(course));
+        student.enroll(courseImpl);
+        assertTrue(student.getEnrollments().containsKey(courseImpl));
+        verify(courseImpl).addStudent(student, student.getEnrollments().get(courseImpl));
     }
 
     @Test
     void unenrollTest() {
-        student.enroll(course);
-        student.unenroll(course);
-        assertFalse(student.getEnrollments().containsKey(course));
-        verify(course).removeStudent(student);
+        student.enroll(courseImpl);
+        student.unenroll(courseImpl);
+        assertFalse(student.getEnrollments().containsKey(courseImpl));
+        verify(courseImpl).removeStudent(student);
     }
 
     @Test
@@ -54,9 +54,9 @@ class StudentTest {
 
     @Test
     void visitSeminarTest() {
-        Course course = new Course("math", LocalDate.now(), 5, 0);
-        student.enroll(course);
-        Enrollment e = student.getEnrollments().get(course);
+        CourseImpl courseImpl = new CourseImpl("math", LocalDate.now(), 0);
+        student.enroll(courseImpl);
+        Enrollment e = student.getEnrollments().get(courseImpl);
         assertEquals(0, e.getVisitedSeminars().size());
         Seminar seminar = new Seminar();
         seminar.setRelatedCourse("math");

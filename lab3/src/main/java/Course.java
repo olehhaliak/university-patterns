@@ -5,19 +5,16 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDate;
 import java.util.*;
 
-/**
- * by OlehHaliak
- */
 @Getter
 @Setter
 @Slf4j
-public class Course {
-    private String name;
-    private LocalDate date;
-    private List<Seminar> seminars;
-    private float fee;
-    private Professor professor;
-    private Map<Student, Enrollment> enrolledStudents = new HashMap<>();
+public abstract class Course {
+    protected String name;
+    protected LocalDate date;
+    protected List<Seminar> seminars;
+    protected float fee;
+    protected Professor professor;
+    protected Map<Student, Enrollment> enrolledStudents = new HashMap<>();
 
     public Course(String name, LocalDate date, Professor professor, float fee) {
         this.name = name;
@@ -27,19 +24,13 @@ public class Course {
         log.info("Course was created: " + this);
     }
 
-    public Course(String name, LocalDate date, int seminarsNumber, float fee) {
+    public Course(String name, LocalDate date,  float fee) {
         this(name, date, null, fee);
     }
 
-    public void addStudent(Student student, Enrollment enrollment) {
-        enrolledStudents.put(student, enrollment);
-        log.info("Successfully added new Student : " + student.getPersonalInfo().getName());
-    }
+    public abstract void addStudent(Student student, Enrollment enrollment);
 
-    public void removeStudent(Student student) {
-        enrolledStudents.remove(student);
-        log.info("Successfully removed Student : " + student.getPersonalInfo().getName());
-    }
+    public abstract void removeStudent(Student student) ;
 
     @Override
     public boolean equals(Object o) {
@@ -66,4 +57,3 @@ public class Course {
                 '}';
     }
 }
-

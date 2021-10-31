@@ -2,30 +2,29 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CourseTest {
-    Course course;
+class CourseImplTest {
+    CourseImpl courseImpl;
 
     @BeforeEach
     void setUp() {
-        course = new Course("Applied math", LocalDate.now(), 5, 8500);
+        courseImpl = new CourseImpl("Applied math", LocalDate.now(),  8500);
     }
 
     @Test
     void addStudentTest() {
         Student student = new Student(new PersonalInfo(1, "John", "Lviv", "0992121244", "joht@g.com"), 1);
-        course.addStudent(student, new Enrollment());
-        assertTrue(course.getEnrolledStudents().containsKey(student));
+        courseImpl.addStudent(student, new Enrollment());
+        assertTrue(courseImpl.getEnrolledStudents().containsKey(student));
     }
 
     @Test
     void removeStudent() {
         Student student = new Student(new PersonalInfo(1, "John", "Lviv", "0992121244", "joht@g.com"), 1);
-        course.addStudent(student, new Enrollment());
-        course.removeStudent(student);
-        assertFalse(course.getEnrolledStudents().containsKey(student));
+        courseImpl.addStudent(student, new Enrollment());
+        courseImpl.removeStudent(student);
+        assertFalse(courseImpl.getEnrolledStudents().containsKey(student));
     }
 }
