@@ -14,14 +14,14 @@ import java.util.*;
  * by OlehHaliak
  */
 @Slf4j
-public class CourseImpl extends Course {
+public class DefaultCourseImpl extends Course {
     private static final int GROUP_CAPACITY = 20;
 
-    public CourseImpl(String name, LocalDate date, Professor professor, float fee) {
+    public DefaultCourseImpl(String name, LocalDate date, Professor professor, float fee) {
         super(name, date, professor, fee);
     }
 
-    public CourseImpl(String name, LocalDate date, float fee) {
+    public DefaultCourseImpl(String name, LocalDate date, float fee) {
         super(name, date, fee);
     }
 

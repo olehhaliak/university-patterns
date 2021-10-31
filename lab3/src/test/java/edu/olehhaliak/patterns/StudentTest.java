@@ -1,6 +1,6 @@
 package edu.olehhaliak.patterns;
 
-import edu.olehhaliak.patterns.course.CourseImpl;
+import edu.olehhaliak.patterns.course.DefaultCourseImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class StudentTest {
     @Mock
-    CourseImpl courseImpl;
+    DefaultCourseImpl defaultCourseImpl;
     Student student;
 
     @BeforeEach
@@ -25,22 +25,22 @@ class StudentTest {
 
     @Test
     void canEnrollTest() {
-        assertTrue(student.canEnroll(courseImpl));
+        assertTrue(student.canEnroll(defaultCourseImpl));
     }
 
     @Test
     void enrollTest() {
-        student.enroll(courseImpl);
-        assertTrue(student.getEnrollments().containsKey(courseImpl));
-        verify(courseImpl).addStudent(student, student.getEnrollments().get(courseImpl));
+        student.enroll(defaultCourseImpl);
+        assertTrue(student.getEnrollments().containsKey(defaultCourseImpl));
+        verify(defaultCourseImpl).addStudent(student, student.getEnrollments().get(defaultCourseImpl));
     }
 
     @Test
     void unenrollTest() {
-        student.enroll(courseImpl);
-        student.unenroll(courseImpl);
-        assertFalse(student.getEnrollments().containsKey(courseImpl));
-        verify(courseImpl).removeStudent(student);
+        student.enroll(defaultCourseImpl);
+        student.unenroll(defaultCourseImpl);
+        assertFalse(student.getEnrollments().containsKey(defaultCourseImpl));
+        verify(defaultCourseImpl).removeStudent(student);
     }
 
     @Test
@@ -57,9 +57,9 @@ class StudentTest {
 
     @Test
     void visitSeminarTest() {
-        CourseImpl courseImpl = new CourseImpl("math", LocalDate.now(), 0);
-        student.enroll(courseImpl);
-        Enrollment e = student.getEnrollments().get(courseImpl);
+        DefaultCourseImpl defaultCourseImpl = new DefaultCourseImpl("math", LocalDate.now(), 0);
+        student.enroll(defaultCourseImpl);
+        Enrollment e = student.getEnrollments().get(defaultCourseImpl);
         assertEquals(0, e.getVisitedSeminars().size());
         Seminar seminar = new Seminar();
         seminar.setRelatedCourse("math");
