@@ -23,6 +23,7 @@ public abstract class Course {
         this.date = date;
         this.seminars = new LinkedList<>();
         this.fee = fee;
+        this.professor = professor;
         groups = new ArrayList<>();
         log.info("edu.olehhaliak.patterns.course.Course was created: " + this);
     }

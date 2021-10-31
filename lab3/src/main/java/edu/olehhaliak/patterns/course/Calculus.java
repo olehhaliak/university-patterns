@@ -10,7 +10,7 @@ public class Calculus extends DefaultCourseImpl{
         super(NAME, date, professor, fee);
     }
 
-    public Calculus(String name, LocalDate date, float fee) {
+    public Calculus( LocalDate date, float fee) {
         super(NAME, date, fee);
     }
 }
